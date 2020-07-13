@@ -21,7 +21,7 @@ ga = pyeasyga.GeneticAlgorithm(data,
 def mutate(individual):
     if mr[0] == 0:
         mr[0] = 1
-    for i in range(16):
+    for _ in range(16):
         mutate_index = random.randrange(len(individual))
         val = individual[mutate_index] + random.randrange(-mr[0], mr[0])
         if val < 0:
@@ -31,8 +31,7 @@ def mutate(individual):
 
 # define and set function to create a candidate solution representation
 def create_individual(data):
-    individual = [random.randrange(0, desired) for i in range(length * length)]
-    return individual
+    return [random.randrange(0, desired) for i in range(length * length)]
 
 
 ga.create_individual = create_individual

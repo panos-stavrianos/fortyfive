@@ -10,20 +10,16 @@ max_num = 10
 
 def columns(table):
     r = []
-    for y in range(0, length):
-        sum = 0
-        for x in range(0, length):
-            sum += table[x][y]
+    for y in range(length):
+        sum = sum(table[x][y] for x in range(length))
         r.append(sum)
     return r
 
 
 def rows(table):
     r = []
-    for x in range(0, length):
-        sum = 0
-        for y in range(0, length):
-            sum += table[x][y]
+    for x in range(length):
+        sum = sum(table[x][y] for y in range(length))
         r.append(sum)
     return r
 
@@ -31,13 +27,11 @@ def rows(table):
 def diagonals(table):
     r = []
     sum = 0
-    for i in range(0, length):
+    for i in range(length):
         sum += table[i][i]
     r.append(sum)
     r.append(sum)
-    sum = 0
-    for i in range(0, length).__reversed__():
-        sum += table[i][i]
+    sum = sum(table[i][i] for i in range(length).__reversed__())
     r.append(sum)
     r.append(sum)
     return r
@@ -45,7 +39,7 @@ def diagonals(table):
 
 def opposites(table):
     r = []
-    for i in range(0, 4):
+    for i in range(4):
         sum = 0
         sum += table[i][i]
         sum += table[i][1 - i]
@@ -57,8 +51,8 @@ def opposites(table):
 
 def pair_groups(table):
     r = []
-    for x in range(0, length - 1):
-        for y in range(0, length - 1):
+    for x in range(length - 1):
+        for y in range(length - 1):
             print(x, y)
             sum = 0
             sum += table[x][y]
